@@ -1,6 +1,10 @@
 {
   "name": "youtube-client-app",
   "version": "0.0.0",
+  "homepage": "https://rolling-scopes-school.github.io/sak74-ANGULAR2023Q4/",
+  "author": {
+    "name": "SAK74"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
