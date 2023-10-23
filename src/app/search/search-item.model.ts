@@ -4,12 +4,19 @@ interface ThumbType {
   height: number;
 }
 
-export interface ItemType {
+type Statistic =
+  | 'viewCount'
+  | 'likeCount'
+  | 'dislikeCount'
+  | 'favoriteCount'
+  | 'commentCount';
+
+export interface ItemModel {
   kind: string;
   etag: string;
   id: string;
   snippet: {
-    publishedAt: Date; // ? string
+    publishedAt: string;
     channelId: string;
     title: string;
     description: string;
@@ -30,12 +37,5 @@ export interface ItemType {
     };
     defaultAudioLanguage: string;
   };
-  statistics: Record<
-  | 'viewCount'
-  | 'likeCount'
-  | 'dislikeCount'
-  | 'favoriteCount'
-  | 'commentCount',
-  string
-  >;
+  statistics: Record<Statistic, string>;
 }

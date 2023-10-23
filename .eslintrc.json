@@ -3,6 +3,14 @@
   "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
+      "files": ["*.spec.ts"],
+      "plugins": ["jasmine"],
+      "env": {
+        "jasmine": true
+      },
+      "extends": ["plugin:jasmine/recommended"]
+    },
+    {
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.(app|spec).json"]
@@ -14,10 +22,24 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "airbnb-typescript/base",
         "plugin:import/recommended",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "airbnb-base"
       ],
+      "settings": {
+        "import/resolver": {
+          "typescript": true
+        }
+      },
       "rules": {
         "@typescript-eslint/no-explicit-any": "error",
+        "import/prefer-default-export": "off",
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "ts": "never"
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
