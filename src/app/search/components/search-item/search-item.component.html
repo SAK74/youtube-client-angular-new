@@ -1,0 +1,18 @@
+<mat-card class="w-[250px]">
+  <mat-card-header>
+    <img
+      class="w-full"
+      mat-card-image
+      [src]="item.snippet.thumbnails.default.url"
+      [alt]="item.id + 'image'"
+    />
+  </mat-card-header>
+  <mat-card-content class="h-[200px]">
+    <mat-card-title>{{ item.snippet.title }}</mat-card-title>
+  </mat-card-content>
+  <mat-card-footer
+    appCardFooter
+    [published]="item.snippet.publishedAt"
+    class="h-1"
+  ></mat-card-footer>
+</mat-card>

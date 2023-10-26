@@ -1,0 +1,5 @@
+@tailwind components;
+
+:host {
+  @apply flex  justify-center py-5;
+}
