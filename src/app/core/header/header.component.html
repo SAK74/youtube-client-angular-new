@@ -1,12 +1,13 @@
 <header class="flex justify-center">
-  <div class="flex flex-col items-start">
+  <div class="flex flex-col items-start p-8 gap-8">
     <div class="flex items-center">
       <img src="assets/logo.png" alt="logo" />
       <input type="text" />
-      <button (click)="toggleSearchShow()">Search</button>
+      <button (click)="searchShow()">Search</button>
       <button (click)="toggleSettingsShow()">control</button>
       <app-user class="absolute right-5"></app-user>
     </div>
-    <app-settings *ngIf="showSettings"></app-settings>
+    <app-settings *ngIf="showSettings" (dateClick)="dateSortChange.emit()">
+    </app-settings>
   </div>
 </header>

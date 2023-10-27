@@ -8,17 +8,19 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  showSettings = false;
+  showSettings = true; // to change
 
-  @Input() showSearch!: boolean;
+  @Input() showSearch = false;
 
   @Output() showSearchChange = new EventEmitter<boolean>();
+
+  @Output('dateSort') dateSortChange = new EventEmitter();
 
   toggleSettingsShow() {
     this.showSettings = !this.showSettings;
   }
 
-  toggleSearchShow() {
-    this.showSearchChange.emit(!this.showSearch);
+  searchShow() {
+    this.showSearchChange.emit(true);
   }
 }

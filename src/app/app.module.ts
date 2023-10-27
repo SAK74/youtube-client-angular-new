@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatCardModule } from '@angular/material/card';
 import { CardFooterDirective } from 'search/directives/card-footer.directive';
+import { SortByDatePipe } from 'search/pipes/sort.pipes';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -20,6 +21,7 @@ import { UserComponent } from './core/header/components/user/user.component';
     SettingsComponent,
     UserComponent,
     CardFooterDirective,
+    SortByDatePipe,
   ],
   imports: [BrowserModule, AppRoutingModule, MatCardModule],
   providers: [],

@@ -33,6 +33,8 @@
       "rules": {
         "@typescript-eslint/no-explicit-any": "error",
         "import/prefer-default-export": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-output-rename": "off",
         "import/extensions": [
           "error",
           "ignorePackages",
@@ -64,7 +66,9 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/interactive-supports-focus": "off"
+      }
     }
   ]
 }

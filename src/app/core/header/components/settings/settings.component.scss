@@ -1,0 +1,12 @@
+@tailwind components;
+
+:host {
+  @apply space-x-4;
+  & > *:not(:first-child) {
+    @apply text-blue-500;
+  }
+}
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+}
