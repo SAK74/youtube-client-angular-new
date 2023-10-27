@@ -5,5 +5,5 @@
 <span class="clickable">count of views</span>
 <label>
   by word or sentence
-  <input type="text" />
+  <input type="text" ngModel (ngModelChange)="wordChange.emit($event)" />
 </label>

@@ -7,4 +7,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class SettingsComponent {
   @Output() dateClick = new EventEmitter();
+
+  @Output() wordChange = new EventEmitter<string>();
 }

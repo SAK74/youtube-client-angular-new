@@ -16,6 +16,8 @@ export class HeaderComponent {
 
   @Output('dateSort') dateSortChange = new EventEmitter();
 
+  @Output() wordChange = new EventEmitter<string>();
+
   toggleSettingsShow() {
     this.showSettings = !this.showSettings;
   }

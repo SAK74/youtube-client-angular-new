@@ -7,7 +7,11 @@
       <button (click)="toggleSettingsShow()">control</button>
       <app-user class="absolute right-5"></app-user>
     </div>
-    <app-settings *ngIf="showSettings" (dateClick)="dateSortChange.emit()">
+    <app-settings
+      *ngIf="showSettings"
+      (dateClick)="dateSortChange.emit()"
+      (wordChange)="wordChange.emit($event)"
+    >
     </app-settings>
   </div>
 </header>

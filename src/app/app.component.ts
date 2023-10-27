@@ -12,7 +12,13 @@ export class AppComponent {
 
   sortByDate: SortType = false;
 
+  sortByWord = '';
+
   dateSortClick() {
     this.sortByDate = this.sortByDate === 'dec' ? 'inc' : 'dec';
+  }
+
+  handleWordChange(val: string) {
+    this.sortByWord = val;
   }
 }

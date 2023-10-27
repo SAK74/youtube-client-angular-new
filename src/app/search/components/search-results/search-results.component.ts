@@ -14,6 +14,8 @@ export class SearchResultsComponent implements OnInit {
 
   @Input('sortByDate') byDate!: SortType;
 
+  @Input('sortWord') byWord!: string;
+
   ngOnInit(): void {
     from(mockedResponse).subscribe((response) => {
       this.items = response.items;
