@@ -1,4 +1,4 @@
-<mat-card class="w-[250px]">
+<mat-card class="w-[260px]">
   <mat-card-header>
     <img
       class="w-full"
@@ -8,8 +8,29 @@
     />
   </mat-card-header>
   <mat-card-content class="h-[200px]">
+    <div class="statistics">
+      <span>
+        <mat-icon fontIcon="visibility"></mat-icon>
+        {{ item.statistics.viewCount }}
+      </span>
+      <span>
+        <mat-icon fontIcon="favorite"></mat-icon>
+        {{ item.statistics.likeCount }}
+      </span>
+      <span>
+        <mat-icon fontIcon="heart_broken"></mat-icon>
+        {{ item.statistics.dislikeCount }}
+      </span>
+      <span>
+        <mat-icon fontIcon="comment_multiple"></mat-icon>
+        {{ item.statistics.commentCount }}
+      </span>
+    </div>
     <mat-card-title>{{ item.snippet.title }}</mat-card-title>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">more...</button>
+  </mat-card-actions>
   <mat-card-footer
     appCardFooter
     [published]="item.snippet.publishedAt"

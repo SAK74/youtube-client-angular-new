@@ -6,6 +6,8 @@ import { CardFooterDirective } from 'search/directives/card-footer.directive';
 import { SortByDatePipe } from 'search/pipes/date-sort.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterByWordPipe } from 'search/pipes/word-filter.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -26,7 +28,14 @@ import { UserComponent } from './core/header/components/user/user.component';
     SortByDatePipe,
     FilterByWordPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatCardModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatCardModule,
+    FormsModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
