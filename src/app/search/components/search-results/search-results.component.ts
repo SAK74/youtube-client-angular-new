@@ -14,6 +14,8 @@ export class SearchResultsComponent implements OnInit {
 
   @Input('sortByDate') byDate!: SortType;
 
+  @Input('sortByView') byViews!: SortType;
+
   @Input('sortWord') byWord!: string;
 
   ngOnInit(): void {

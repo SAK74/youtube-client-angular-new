@@ -14,8 +14,14 @@ export class AppComponent {
 
   sortByWord = '';
 
+  sortByView: SortType = false;
+
   dateSortClick() {
     this.sortByDate = this.sortByDate === 'dec' ? 'inc' : 'dec';
+  }
+
+  viewSortClick() {
+    this.sortByView = this.sortByView === 'dec' ? 'inc' : 'dec';
   }
 
   handleWordChange(val: string) {

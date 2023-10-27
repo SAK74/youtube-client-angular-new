@@ -18,6 +18,8 @@ export class HeaderComponent {
 
   @Output() wordChange = new EventEmitter<string>();
 
+  @Output() viewClick = new EventEmitter();
+
   toggleSettingsShow() {
     this.showSettings = !this.showSettings;
   }

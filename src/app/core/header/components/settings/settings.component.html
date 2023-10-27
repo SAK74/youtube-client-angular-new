@@ -2,7 +2,9 @@
 <span class="clickable" (click)="dateClick.emit()" (keypress)="(null)"
   >date</span
 >
-<span class="clickable">count of views</span>
+<span class="clickable" (click)="viewClick.emit()" (keypress)="(null)"
+  >count of views</span
+>
 <label>
   by word or sentence
   <input type="text" ngModel (ngModelChange)="wordChange.emit($event)" />

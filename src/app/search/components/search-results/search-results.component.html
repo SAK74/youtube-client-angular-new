@@ -1,6 +1,8 @@
 <div class="flex flex-wrap justify-around gap-4 w-11/12">
   <app-search-item
-    *ngFor="let item of items | byWord : byWord | byDate : byDate"
+    *ngFor="
+      let item of items | byWord : byWord | byDate : byDate | byViews : byViews
+    "
     [item]="item"
   ></app-search-item>
 </div>
