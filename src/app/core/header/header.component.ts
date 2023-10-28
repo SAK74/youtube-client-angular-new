@@ -1,6 +1,8 @@
 import {
   Component, Input, Output, EventEmitter,
 } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,7 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  showSettings = true; // to change
+  showSettings = false;
 
   @Input() showSearch = false;
 
@@ -19,6 +21,16 @@ export class HeaderComponent {
   @Output() wordChange = new EventEmitter<string>();
 
   @Output() viewClick = new EventEmitter();
+
+  constructor(
+    private iconReg: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+  ) {
+    iconReg.addSvgIcon(
+      'settings-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/search_settings.svg'),
+    );
+  }
 
   toggleSettingsShow() {
     this.showSettings = !this.showSettings;

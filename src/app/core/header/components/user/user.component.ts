@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-
+  constructor(
+    private iconReg: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+  ) {
+    iconReg.addSvgIcon(
+      'user-icon',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/login.svg'),
+    );
+  }
 }

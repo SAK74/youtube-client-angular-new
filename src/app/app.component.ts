@@ -8,7 +8,7 @@ export type SortType = 'inc' | 'dec' | false;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  showSearch = true; // to change!!
+  showSearch = false;
 
   sortByDate: SortType = false;
 

@@ -1,12 +1,18 @@
 <header class="flex justify-center">
   <div class="flex flex-col items-start p-8 gap-8">
-    <div class="flex items-center">
+    <div class="wrapper">
       <img src="assets/logo.png" alt="logo" />
-      <input type="text" />
-      <app-button color="primary" type="raised" (click)="searchShow()"
-        >search</app-button
-      >
-      <button (click)="toggleSettingsShow()">control</button>
+      <div class="input-wrapper">
+        <input type="text" class="" />
+        <app-button color="primary" type="raised" (click)="searchShow()"
+          >search</app-button
+        >
+      </div>
+
+      <button mat-icon-button (click)="toggleSettingsShow()">
+        <mat-icon svgIcon="settings-icon"></mat-icon>
+      </button>
+
       <app-user class="absolute right-5"></app-user>
     </div>
     <app-settings

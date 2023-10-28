@@ -1,4 +1,12 @@
+@tailwind components;
+
 :host {
   background-color: #e5e5e5;
   display: block;
+}
+.wrapper {
+  @apply flex items-center gap-4;
+  & input {
+    @apply w-[420px] h-7 rounded bg-gray-100;
+  }
 }

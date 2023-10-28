@@ -1,0 +1,9 @@
+@tailwind components;
+
+:host {
+  @apply flex items-center gap-4;
+}
+
+mat-icon {
+  @apply w-8 h-8;
+}

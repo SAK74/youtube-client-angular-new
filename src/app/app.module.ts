@@ -8,6 +8,7 @@ import { FilterByWordPipe } from 'search/pipes/word-filter.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SortByViewsPipe } from 'search/pipes/view-sort.pipe';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
@@ -37,6 +38,7 @@ import { ButtonComponent } from './lib/button/button.component';
     MatIconModule,
     MatButtonModule,
     SettingsComponent,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
