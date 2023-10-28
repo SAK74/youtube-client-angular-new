@@ -1,26 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component, OnInit, Input, OnDestroy,
+} from '@angular/core';
 import { ItemModel } from 'search/search-item.model';
 import mockedResponse from 'services/mockResponse';
-import { from } from 'rxjs';
-import { SortType } from 'app.component';
+import { from, takeUntil, Subject } from 'rxjs';
+import { Sort } from 'app.component';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   items: ItemModel[] = [];
 
-  @Input('sortByDate') byDate!: SortType;
+  destroyer = new Subject<void>();
 
-  @Input('sortByView') byViews!: SortType;
+  @Input('sortByDate') byDate!: Sort;
+
+  @Input('sortByView') byViews!: Sort;
 
   @Input('sortWord') byWord!: string;
 
   ngOnInit(): void {
-    from(mockedResponse).subscribe((response) => {
-      this.items = response.items;
-    });
+    from(mockedResponse)
+      .pipe(takeUntil(this.destroyer))
+      .subscribe((response) => {
+        this.items = response.items;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroyer.next();
+    this.destroyer.complete();
   }
 }

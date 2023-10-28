@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
-export type SortType = 'inc' | 'dec' | false;
+export enum Sort {
+  INC = 'inc',
+  DEC = 'dec',
+  NONE = '',
+}
 
 @Component({
   selector: 'app-root',
@@ -10,21 +14,21 @@ export type SortType = 'inc' | 'dec' | false;
 export class AppComponent {
   showSearch = false;
 
-  sortByDate: SortType = false;
+  sortByDate: Sort = Sort.NONE;
 
   sortByWord = '';
 
-  sortByView: SortType = false;
+  sortByView: Sort = Sort.NONE;
 
   dateSortClick() {
-    this.sortByDate = this.sortByDate === 'dec' ? 'inc' : 'dec';
+    this.sortByDate = this.sortByDate === Sort.DEC ? Sort.INC : Sort.DEC;
   }
 
   viewSortClick() {
-    this.sortByView = this.sortByView === 'dec' ? 'inc' : 'dec';
+    this.sortByView = this.sortByView === Sort.DEC ? Sort.INC : Sort.DEC;
   }
 
-  handleWordChange(val: string) {
-    this.sortByWord = val;
+  handleWordChange(word: string) {
+    this.sortByWord = word;
   }
 }
