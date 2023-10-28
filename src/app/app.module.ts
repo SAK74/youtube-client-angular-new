@@ -16,6 +16,7 @@ import { SearchResultsComponent } from './search/components/search-results/searc
 import { SearchItemComponent } from './search/components/search-item/search-item.component';
 import { SettingsComponent } from './core/header/components/settings/settings.component';
 import { UserComponent } from './core/header/components/user/user.component';
+import { ButtonComponent } from './lib/button/button.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserComponent } from './core/header/components/user/user.component';
     SortByDatePipe,
     FilterByWordPipe,
     SortByViewsPipe,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

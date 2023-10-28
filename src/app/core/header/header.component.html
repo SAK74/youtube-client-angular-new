@@ -3,7 +3,9 @@
     <div class="flex items-center">
       <img src="assets/logo.png" alt="logo" />
       <input type="text" />
-      <button (click)="searchShow()">Search</button>
+      <app-button color="primary" type="raised" (click)="searchShow()"
+        >search</app-button
+      >
       <button (click)="toggleSettingsShow()">control</button>
       <app-user class="absolute right-5"></app-user>
     </div>
