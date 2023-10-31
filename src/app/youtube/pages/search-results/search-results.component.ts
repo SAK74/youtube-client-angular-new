@@ -1,7 +1,7 @@
 import {
   Component, OnInit, Input, OnDestroy,
 } from '@angular/core';
-import { ItemModel } from 'search/search-item.model';
+import { ItemModel } from 'youtube/models/search-item.model';
 import mockedResponse from 'services/mockResponse';
 import { from, takeUntil, Subject } from 'rxjs';
 import { Sort } from 'app.component';

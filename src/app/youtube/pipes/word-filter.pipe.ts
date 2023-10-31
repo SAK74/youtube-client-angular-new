@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ItemModel } from 'search/search-item.model';
+import { ItemModel } from 'youtube/models/search-item.model';
 
 @Pipe({ name: 'byWord' })
 export class FilterByWordPipe implements PipeTransform {

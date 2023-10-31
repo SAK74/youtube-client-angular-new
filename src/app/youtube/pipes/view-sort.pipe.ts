@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Sort } from 'app.component';
-import { ItemModel } from 'search/search-item.model';
+import { ItemModel } from 'youtube/models/search-item.model';
 
 @Pipe({ name: 'byViews' })
 export class SortByViewsPipe implements PipeTransform {
