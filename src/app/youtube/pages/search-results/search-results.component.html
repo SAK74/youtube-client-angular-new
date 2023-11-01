@@ -4,7 +4,10 @@
 >
   <app-search-item
     *ngFor="
-      let item of items | byWord : byWord | byDate : byDate | byViews : byViews
+      let item of items
+        | byWord : sortParams.filterByWord
+        | byDate : sortParams.sortByDate
+        | byViews : sortParams.sortByView
     "
     [item]="item"
   ></app-search-item>

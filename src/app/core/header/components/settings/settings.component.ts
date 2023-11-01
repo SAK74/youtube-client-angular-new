@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SortParamService } from 'youtube/services/sort-param.service';
 
 @Component({
   selector: 'app-settings',
@@ -9,9 +10,18 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
 })
 export class SettingsComponent {
-  @Output() dateClick = new EventEmitter();
+  // eslint-disable-next-line no-useless-constructor, no-empty-function
+  constructor(private sortParams: SortParamService) {}
 
-  @Output() wordChange = new EventEmitter<string>();
+  byDateClick() {
+    this.sortParams.togleByDate();
+  }
 
-  @Output() viewClick = new EventEmitter();
+  byViewClick() {
+    this.sortParams.togleByView();
+  }
+
+  byWordClick(value: string) {
+    this.sortParams.word = value;
+  }
 }

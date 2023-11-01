@@ -15,12 +15,6 @@
 
       <app-user class="absolute right-5"></app-user>
     </div>
-    <app-settings
-      *ngIf="showSettings"
-      (dateClick)="dateSortChange.emit()"
-      (wordChange)="wordChange.emit($event)"
-      (viewClick)="viewClick.emit()"
-    >
-    </app-settings>
+    <app-settings *ngIf="showSettings"> </app-settings>
   </div>
 </header>

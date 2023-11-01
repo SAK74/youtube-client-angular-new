@@ -1,11 +1,11 @@
 <span class="text-slate-400">Sorting by:</span>
-<span class="clickable" (click)="dateClick.emit()" (keypress)="dateClick.emit()"
+<span class="clickable" (click)="byDateClick()" (keypress)="(byDateClick)"
   >date</span
 >
-<span class="clickable" (click)="viewClick.emit()" (keypress)="viewClick.emit()"
+<span class="clickable" (click)="byViewClick()" (keypress)="byViewClick()"
   >count of views</span
 >
 <label>
   by word or sentence
-  <input type="text" ngModel (ngModelChange)="wordChange.emit($event)" />
+  <input type="text" ngModel (ngModelChange)="byWordClick($event)" />
 </label>
