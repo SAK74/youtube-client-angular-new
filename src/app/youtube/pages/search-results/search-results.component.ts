@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component, OnInit, OnDestroy, inject,
+} from '@angular/core';
 import { ItemModel } from 'youtube/models/search-item.model';
 import { from, takeUntil, Subject } from 'rxjs';
 import { ShowListService } from 'youtube/services/show-list.service';
@@ -28,9 +30,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this.destroyer.complete();
   }
 
-  // eslint-disable-next-line no-useless-constructor
-  constructor(
-    public listShow: ShowListService,
-    public sortParams: SortParamService,
-  ) {} // eslint-disable-line no-empty-function
+  listShow = inject(ShowListService);
+
+  sortParams = inject(SortParamService);
 }

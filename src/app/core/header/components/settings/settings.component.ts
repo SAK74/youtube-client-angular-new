@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SortParamService } from 'youtube/services/sort-param.service';
 
@@ -10,8 +10,7 @@ import { SortParamService } from 'youtube/services/sort-param.service';
   imports: [FormsModule],
 })
 export class SettingsComponent {
-  // eslint-disable-next-line no-useless-constructor, no-empty-function
-  constructor(private sortParams: SortParamService) {}
+  sortParams = inject(SortParamService);
 
   byDateClick() {
     this.sortParams.togleByDate();
