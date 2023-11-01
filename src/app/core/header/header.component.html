@@ -9,12 +9,12 @@
         >
       </div>
 
-      <button mat-icon-button (click)="toggleSettingsShow()">
+      <button mat-icon-button (click)="showSettings.toggle()">
         <mat-icon svgIcon="settings-icon"></mat-icon>
       </button>
 
       <app-user class="absolute right-5"></app-user>
     </div>
-    <app-settings *ngIf="showSettings"> </app-settings>
+    <app-settings *ngIf="showSettings.isShow"> </app-settings>
   </div>
 </header>
