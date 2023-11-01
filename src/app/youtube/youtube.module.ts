@@ -8,6 +8,7 @@ import { CardFooterDirective } from './directives/card-footer.directive';
 import { FilterByWordPipe } from './pipes/word-filter.pipe';
 import { SortByDatePipe } from './pipes/date-sort.pipe';
 import { SortByViewsPipe } from './pipes/view-sort.pipe';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { SortByViewsPipe } from './pipes/view-sort.pipe';
     SortByViewsPipe,
   ],
   exports: [SearchResultsComponent],
-  imports: [MatCardModule, MatIconModule, SharedModule],
+  imports: [MatCardModule, MatIconModule, SharedModule, CommonModule],
 })
 export class YoutubeModule {}

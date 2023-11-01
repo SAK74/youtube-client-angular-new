@@ -1,11 +1,9 @@
 <app-header
-  [(showSearch)]="showSearch"
   (dateSort)="dateSortClick()"
   (wordChange)="handleWordChange($event)"
   (viewClick)="viewSortClick()"
 ></app-header>
 <app-search-results
-  *ngIf="showSearch"
   [sortByDate]="sortByDate"
   [sortWord]="sortByWord"
   [sortByView]="sortByView"

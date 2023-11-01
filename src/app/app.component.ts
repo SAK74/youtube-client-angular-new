@@ -12,7 +12,7 @@ export enum Sort {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  showSearch = false;
+  // showSearch = false;
 
   sortByDate: Sort = Sort.NONE;
 

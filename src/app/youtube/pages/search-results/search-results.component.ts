@@ -1,10 +1,9 @@
-import {
-  Component, OnInit, Input, OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ItemModel } from 'youtube/models/search-item.model';
-import mockedResponse from 'services/mockResponse';
+import mockedResponse from '../../services/mockResponse';
 import { from, takeUntil, Subject } from 'rxjs';
 import { Sort } from 'app.component';
+import { ShowListService } from 'youtube/services/show-list.service';
 
 @Component({
   selector: 'app-search-results',
@@ -34,4 +33,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this.destroyer.next();
     this.destroyer.complete();
   }
+
+  constructor(public listShow: ShowListService) {}
 }
