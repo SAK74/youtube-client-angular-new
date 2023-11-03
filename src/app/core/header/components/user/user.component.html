@@ -1,4 +1,12 @@
-<!-- <div> -->
-<span>You name</span>
-<mat-icon svgIcon="user-icon" class=""></mat-icon>
-<!-- </div> -->
+<span *ngIf="loginService.userIsLogged">{{ loginService.userName }}</span>
+
+<button
+  mat-icon-button
+  [disabled]="!loginService.userIsLogged"
+  [mat-menu-trigger-for]="menu"
+>
+  <mat-icon svgIcon="user-icon" class=""></mat-icon>
+</button>
+<mat-menu #menu>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ShowListService {
-  listIsShowed = true; // to change
+  listIsShowed = false;
 
   set setShow(show: boolean) {
     this.listIsShowed = show;

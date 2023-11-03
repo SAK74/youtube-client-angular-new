@@ -12,6 +12,10 @@
     },
     {
       "files": ["*.ts"],
+      "env": {
+        "browser": true,
+        "node": true
+      },
       "parserOptions": {
         "project": ["tsconfig.(app|spec).json"]
       },

@@ -9,5 +9,7 @@ import { ThemePalette } from '@angular/material/core';
 export class ButtonComponent {
   @Input() color!: ThemePalette;
 
-  @Input() type?: 'raised' | 'flat' | 'stroked';
+  @Input() effect?: 'raised' | 'flat' | 'stroked';
+
+  @Input() type?: HTMLButtonElement['type'];
 }

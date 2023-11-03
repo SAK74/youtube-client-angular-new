@@ -1,11 +1,11 @@
 <button
-  type="button"
+  [type]="type"
   mat-button
   [color]="color"
   [ngClass]="{
-  'mat-mdc-raised-button mdc-button--raised':type==='raised',
-  'mat-mdc-unelevated-button mdc-button--unelevated':type==='flat',
-  'mat-mdc-outlined-button mdc-button--outlined':type==='stroked',
+  'mat-mdc-raised-button mdc-button--raised':effect==='raised',
+  'mat-mdc-unelevated-button mdc-button--unelevated':effect==='flat',
+  'mat-mdc-outlined-button mdc-button--outlined':effect==='stroked',
 }"
 >
   <ng-content></ng-content>
