@@ -9,6 +9,7 @@ import { LoginService } from 'auth/services/login.service';
 })
 export class AuthComponent {
   private loginService = inject(LoginService);
+
   login(form: NgForm) {
     if (form.valid) {
       this.loginService.login(form.controls['login'].value);

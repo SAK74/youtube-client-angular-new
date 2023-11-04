@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
+import { DevLoggerService } from 'core/services/dev-logger.service';
+import { ProdLoggerService } from 'core/services/prod-logger.service';
 
 const TOKEN_KEY = 'token';
 const USER_KEY = 'user_name';
@@ -11,7 +13,11 @@ export class LoginService {
 
   userName = '';
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private devLogger: DevLoggerService,
+    private prodLogger: ProdLoggerService,
+  ) {
     this.userIsLogged = localStorage.getItem(TOKEN_KEY) === fakeValue;
     this.userName = localStorage.getItem(USER_KEY) || '';
   }
@@ -22,6 +28,11 @@ export class LoginService {
     this.userIsLogged = true;
     this.userName = name;
     this.router.navigateByUrl('/youtube');
+    if (isDevMode()) {
+      this.devLogger.logMessage();
+    } else {
+      this.prodLogger.logMessage();
+    }
   }
 
   logout() {
