@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ItemModel } from 'youtube/models/search-item.model';
 
 @Component({
@@ -8,4 +9,12 @@ import { ItemModel } from 'youtube/models/search-item.model';
 })
 export class SearchItemComponent {
   @Input() item!: ItemModel;
+
+  private router = inject(Router);
+
+  private route = inject(ActivatedRoute);
+
+  cardClick() {
+    this.router.navigate([this.item.id], { relativeTo: this.route });
+  }
 }

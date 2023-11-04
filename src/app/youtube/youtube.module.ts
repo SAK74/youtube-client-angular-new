@@ -10,6 +10,7 @@ import { FilterByWordPipe } from './pipes/word-filter.pipe';
 import { SortByDatePipe } from './pipes/date-sort.pipe';
 import { SortByViewsPipe } from './pipes/view-sort.pipe';
 import { YoutubeRoutingModule } from './youtube-routing.module';
+import { DetailedViewComponent } from './pages/detailed-view/detailed-view.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     FilterByWordPipe,
     SortByDatePipe,
     SortByViewsPipe,
+    DetailedViewComponent,
   ],
   exports: [],
   imports: [

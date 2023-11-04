@@ -29,7 +29,9 @@
     <mat-card-title>{{ item.snippet.title }}</mat-card-title>
   </mat-card-content>
   <mat-card-actions>
-    <app-button color="primary" effect="raised">more...</app-button>
+    <app-button color="primary" effect="raised" (click)="cardClick()"
+      >more...</app-button
+    >
   </mat-card-actions>
   <mat-card-footer
     appCardFooter
