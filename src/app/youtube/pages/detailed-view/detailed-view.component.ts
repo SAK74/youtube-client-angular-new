@@ -10,17 +10,15 @@ import mockResponse from '../../services/mockResponse';
   styleUrls: ['./detailed-view.component.scss'],
 })
 export class DetailedViewComponent {
-  id = '';
-
   item!: ItemModel;
 
   error?: string;
 
   constructor(private route: ActivatedRoute) {
     route.paramMap.subscribe((params) => {
-      this.id = params.get('id') || '';
+      const id = params.get('id') || '';
       from(mockResponse)
-        .pipe(map((resp) => resp.items.find((item) => item.id === this.id)))
+        .pipe(map((resp) => resp.items.find((item) => item.id === id)))
         .subscribe((item) => {
           if (!item) {
             this.error = 'Item not founded...';

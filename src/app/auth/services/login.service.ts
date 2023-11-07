@@ -1,4 +1,4 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable, isDevMode, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DevLoggerService } from 'core/services/dev-logger.service';
 import { ProdLoggerService } from 'core/services/prod-logger.service';
@@ -9,18 +9,15 @@ const fakeValue = 'qwertyuikl,mnbvcxzasdfgtyuiol.,mnb';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  userIsLogged: boolean;
+  userIsLogged: boolean = localStorage.getItem(TOKEN_KEY) === fakeValue;
 
-  userName = '';
+  userName = localStorage.getItem(USER_KEY) || '';
 
-  constructor(
-    private router: Router,
-    private devLogger: DevLoggerService,
-    private prodLogger: ProdLoggerService,
-  ) {
-    this.userIsLogged = localStorage.getItem(TOKEN_KEY) === fakeValue;
-    this.userName = localStorage.getItem(USER_KEY) || '';
-  }
+  private router = inject(Router);
+
+  private devLogger = inject(DevLoggerService);
+
+  private prodLogger = inject(ProdLoggerService);
 
   login(name: string) {
     localStorage.setItem(TOKEN_KEY, fakeValue);
