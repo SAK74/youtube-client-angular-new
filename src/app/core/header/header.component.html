@@ -3,7 +3,7 @@
     <div class="wrapper">
       <img src="assets/logo.png" alt="logo" />
       <div class="input-wrapper">
-        <input type="text" class="" />
+        <input [formControl]="searchCtrl" />
         <app-button color="primary" effect="raised" (click)="searchShow()"
           >search</app-button
         >
