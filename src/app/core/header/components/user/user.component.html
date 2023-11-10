@@ -1,8 +1,8 @@
-<span *ngIf="loginService.userIsLogged">{{ loginService.userName }}</span>
+<span *ngIf="userIsLogged">{{ userName }}</span>
 
 <button
   mat-icon-button
-  [disabled]="!loginService.userIsLogged"
+  [disabled]="!userIsLogged"
   [mat-menu-trigger-for]="menu"
 >
   <mat-icon svgIcon="user-icon" class=""></mat-icon>

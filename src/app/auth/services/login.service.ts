@@ -1,7 +1,8 @@
-import { Injectable, isDevMode, inject } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 import { DevLoggerService } from 'core/services/dev-logger.service';
 import { ProdLoggerService } from 'core/services/prod-logger.service';
+import { Subject } from 'rxjs';
 
 const TOKEN_KEY = 'token';
 const USER_KEY = 'user_name';
@@ -9,21 +10,30 @@ const fakeValue = 'qwertyuikl,mnbvcxzasdfgtyuiol.,mnb';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  userIsLogged: boolean = localStorage.getItem(TOKEN_KEY) === fakeValue;
+  userIsLogged = false;
 
   userName = localStorage.getItem(USER_KEY) || '';
 
-  private router = inject(Router);
+  loginObserver = new Subject<boolean>();
 
-  private devLogger = inject(DevLoggerService);
+  nameObserver = new Subject<string>();
 
-  private prodLogger = inject(ProdLoggerService);
+  constructor(
+    private router: Router,
+    private devLogger: DevLoggerService,
+    private prodLogger: ProdLoggerService,
+  ) {
+    this.loginObserver.subscribe((isLogged) => {
+      this.userIsLogged = isLogged;
+    });
+    this.loginObserver.next(localStorage.getItem(TOKEN_KEY) === fakeValue);
+  }
 
   login(name: string) {
     localStorage.setItem(TOKEN_KEY, fakeValue);
     localStorage.setItem(USER_KEY, name);
-    this.userIsLogged = true;
-    this.userName = name;
+    this.loginObserver.next(true);
+    this.nameObserver.next(name);
     this.router.navigateByUrl('/youtube');
     if (isDevMode()) {
       this.devLogger.logMessage();
@@ -35,7 +45,8 @@ export class LoginService {
   logout() {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
-    this.userIsLogged = false;
+    this.loginObserver.next(false);
+    this.nameObserver.next('');
     this.router.navigateByUrl('/auth');
   }
 }

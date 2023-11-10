@@ -26,7 +26,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     // return to stored (if exist) search
     this.searchWord = searchService.searchWord;
     if (this.searchWord) {
-      // this.showList(this.searchWord); // to change!!!
+      this.showList(this.searchWord);
     }
   }
 
@@ -35,7 +35,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       ?.pipe(takeUntil(this.destroyer))
       .subscribe((word) => {
         this.searchWord = word;
-        // this.showList(word); // to change!!!
+        this.showList(word);
       });
   }
 
