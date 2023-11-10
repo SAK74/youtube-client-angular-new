@@ -11,10 +11,11 @@ type Statistic =
   | 'favoriteCount'
   | 'commentCount';
 
-export interface ItemModel {
+export interface SourceModel {
   kind: string;
   etag: string;
-  id: string;
+  id: Record<'kind' | 'videoId' | 'channelId' | 'playlistId', string>;
+
   snippet: {
     publishedAt: string;
     channelId: string;
@@ -28,6 +29,11 @@ export interface ItemModel {
       maxres: ThumbType;
     };
     channelTitle: string;
+  };
+}
+
+export interface ItemModel extends SourceModel {
+  snippet: SourceModel['snippet'] & {
     tags: string[];
     categoryId: string;
     liveBroadcastContent: string;

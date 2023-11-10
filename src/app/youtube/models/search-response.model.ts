@@ -1,11 +1,11 @@
-import { ItemModel } from './search-item.model';
+import { SourceModel } from './search-item.model';
 
-export interface ResponseModel {
+export interface ResponseModel<T = SourceModel> {
   kind: string;
   etag: string;
   pageInfo: {
     totalResults: number;
     resultsPerPage: number;
   };
-  items: ItemModel[];
+  items: T[];
 }

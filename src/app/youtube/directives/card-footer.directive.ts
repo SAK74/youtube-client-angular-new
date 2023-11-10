@@ -13,7 +13,7 @@ enum Colors {
   selector: '[appCardFooter]',
 })
 export class CardFooterDirective implements OnInit {
-  @Input() published!: string;
+  @Input() published?: string;
 
   dayNow: number;
 
@@ -24,6 +24,9 @@ export class CardFooterDirective implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.published) {
+      return;
+    }
     const below = (this.dayNow - new Date(this.published).getTime()) / 1000 / 3600 / 24;
     if (below < 7) {
       this.color = Colors.LAST;
