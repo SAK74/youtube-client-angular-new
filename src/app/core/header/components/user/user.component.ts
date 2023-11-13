@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { LoginService } from 'auth/services/login.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -18,6 +19,7 @@ export class UserComponent implements OnDestroy {
     private iconReg: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private loginService: LoginService,
+    private router: Router,
   ) {
     iconReg.addSvgIcon(
       'user-icon',
@@ -37,6 +39,14 @@ export class UserComponent implements OnDestroy {
 
   logout() {
     this.loginService.logout();
+  }
+
+  goToAdmin() {
+    this.router.navigateByUrl('admin');
+  }
+
+  toYoutube() {
+    this.router.navigateByUrl('youtube');
   }
 
   destroyer = new Subject<void>();
