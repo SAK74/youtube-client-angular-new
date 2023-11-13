@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: async () => (await import('auth/auth.module')).AuthModule,
   },
   {
+    path: 'admin',
+    loadChildren: async () => (await import('admin/admin.module')).AdminModule,
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'youtube',
