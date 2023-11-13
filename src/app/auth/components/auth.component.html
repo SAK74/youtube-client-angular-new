@@ -1,31 +1,32 @@
 <form
-  #form="ngForm"
-  (ngSubmit)="login(form)"
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
   class="flex flex-col bg-slate-200 p-8"
 >
   <h2>Login</h2>
   <label for="login">Login</label>
   <mat-form-field>
-    <input type="text" name="login" ngModel required matInput id="login" />
+    <input type="text" required matInput id="login" formControlName="login" />
+    <mat-error>{{ getError("login") }}</mat-error>
   </mat-form-field>
 
   <label for="password">Password</label>
   <mat-form-field>
     <input
       type="password"
-      name="password"
-      ngModel
       required
       matInput
       id="password"
+      formControlName="password"
     />
+    <mat-error>{{ getError("password") }}</mat-error>
   </mat-form-field>
 
-  <p *ngIf="form.invalid && form.submitted" class="text-red-500">
-    All fields are required!
-  </p>
-
-  <app-button type="submit" effect="raised" color="primary" class="self-end"
+  <app-button
+    type="submit"
+    effect="raised"
+    color="primary"
+    class="self-end mt-9"
     >Login</app-button
   >
 </form>

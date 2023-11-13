@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +17,7 @@ import { AuthRoutingModule } from './auth-routing.module';
     MatFormFieldModule,
     MatInputModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [AuthComponent],
 })
