@@ -27,7 +27,8 @@
         "airbnb-typescript/base",
         "plugin:import/recommended",
         "plugin:import/typescript",
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:@ngrx/recommended-requiring-type-checking"
       ],
       "settings": {
         "import/resolver": {

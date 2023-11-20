@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReduxModule } from 'redux/redux.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     CoreModule,
     RouterModule,
     BrowserAnimationsModule,
+    ReduxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
