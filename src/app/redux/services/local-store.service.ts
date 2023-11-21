@@ -11,9 +11,12 @@ export class CardsStoreService {
 
   save() {
     console.log('stored in service!!!');
-    this.store.select(selectCustomCards).subscribe((cards) => {
-      localStorage.setItem(CARDS_KEY, JSON.stringify(cards));
-    });
+    this.store
+      .select(selectCustomCards)
+      .subscribe((cards) => {
+        localStorage.setItem(CARDS_KEY, JSON.stringify(cards));
+      })
+      .unsubscribe();
   }
 
   static read() {
