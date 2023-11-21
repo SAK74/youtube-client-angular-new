@@ -5,7 +5,10 @@ import { Sort } from 'youtube/models/sort.type';
 @Pipe({ name: 'byDate' })
 export class SortByDatePipe implements PipeTransform {
   // eslint-disable-next-line class-methods-use-this
-  transform(value: ItemModel[], dir: Sort) {
+  transform(value: ItemModel[] | null, dir: Sort) {
+    if (!value) {
+      return null;
+    }
     return !dir
       ? value
       : value.sort((a, b) => {

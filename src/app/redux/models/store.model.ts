@@ -2,7 +2,7 @@ import { ItemModel } from 'youtube/models/search-item.model';
 
 export interface CustomCard {
   title: string;
-  description?: string;
+  description: string;
   img: string;
   video: string;
   creationDate: string;

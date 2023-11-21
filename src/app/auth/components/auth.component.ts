@@ -26,7 +26,7 @@ export class AuthComponent {
       case field.hasError('email'):
         return `The ${name} format is invalid`;
       case field.hasError('wrongFormat'):
-        return field.errors?.['wrongFormat'];
+        return field.getError('wrongFormat');
       default:
         return null;
     }

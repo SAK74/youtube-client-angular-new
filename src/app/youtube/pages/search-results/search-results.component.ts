@@ -1,11 +1,13 @@
 import {
   Component, OnInit, OnDestroy, inject,
 } from '@angular/core';
-import { ItemModel } from 'youtube/models/search-item.model';
-import { takeUntil, Subject, map } from 'rxjs';
+import { takeUntil, Subject } from 'rxjs';
 import { SortParamService } from 'youtube/services/sort-param.service';
 import { HTTPRequestService } from 'youtube/services/http-request.service';
 import { SearchService } from 'core/header/services/search.service';
+import { Store } from '@ngrx/store';
+import { StoreModel } from 'redux/models/store.model';
+import { selectCustomCards, selectVideos } from 'redux/selectors';
 
 @Component({
   selector: 'app-search-results',
@@ -13,7 +15,9 @@ import { SearchService } from 'core/header/services/search.service';
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
-  items: ItemModel[] = [];
+  items$ = this.store.select(selectVideos);
+
+  cards$ = this.store.select(selectCustomCards);
 
   searchWord = '';
 
@@ -22,11 +26,12 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   constructor(
     private request: HTTPRequestService,
     private searchService: SearchService,
+    private readonly store: Store<StoreModel>,
   ) {
     // return to stored (if exist) search
     this.searchWord = searchService.searchWord;
     if (this.searchWord) {
-      this.showList(this.searchWord);
+      // this.showList(this.searchWord);
     }
   }
 
@@ -35,29 +40,35 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       ?.pipe(takeUntil(this.destroyer))
       .subscribe((word) => {
         this.searchWord = word;
-        this.showList(word);
+        // this.showList(word);
       });
+
+    // this.store
+    //   .select((state) => state.customCards)
+    //   .subscribe((cards) => {
+    //     this.cards = cards;
+    //   });
   }
 
-  private showList(search = '') {
-    this.items = [];
-    this.request
-      .getSearch(search)
-      .pipe(map((resp) => resp.items))
-      .subscribe((items) => {
-        items.forEach(({ id: { videoId } }) => {
-          this.request
-            .getVideo(videoId)
-            .pipe(
-              map((resp) => resp.items[0]),
-              takeUntil(this.destroyer),
-            )
-            .subscribe((item) => {
-              this.items.push(item);
-            });
-        });
-      });
-  }
+  // private showList(search = '') {
+  //   // this.items = [];
+  //   // this.request
+  //   //   .getSearch(search)
+  //   //   .pipe(map((resp) => resp.items))
+  //   //   .subscribe((items) => {
+  //   //     items.forEach(({ id: { videoId } }) => {
+  //   //       this.request
+  //   //         .getVideo(videoId)
+  //   //         .pipe(
+  //   //           map((resp) => resp.items[0]),
+  //   //           takeUntil(this.destroyer),
+  //   //         )
+  //   //         .subscribe((item) => {
+  //   //           this.items.push(item);
+  //   //         });
+  //   //     });
+  //   //   });
+  // }
 
   ngOnDestroy(): void {
     this.searchService.searchWord = this.searchWord; // store prev search
@@ -66,4 +77,8 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   sortParams = inject(SortParamService);
+
+  // private store = inject<Store<StoreModel>>(Store<StoreModel>);
+
+  // customCards$=this.store.select(store=>store.customCards)
 }

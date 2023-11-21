@@ -14,6 +14,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { DetailedViewComponent } from './pages/detailed-view/detailed-view.component';
 import { HTTPRequestService } from './services/http-request.service';
 import { interceptorsProvider } from './services/interceptors';
+import { CustomCardComponent } from './components/customcard/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { interceptorsProvider } from './services/interceptors';
     SortByDatePipe,
     SortByViewsPipe,
     DetailedViewComponent,
+    CustomCardComponent,
   ],
   exports: [],
   imports: [

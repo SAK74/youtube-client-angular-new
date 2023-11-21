@@ -1,0 +1,23 @@
+<mat-card class="w-[260px]">
+  <mat-card-header>
+    <img
+      class="w-full"
+      mat-card-image
+      [src]="item.img"
+      [alt]="item.id + ' image'"
+    />
+  </mat-card-header>
+  <mat-card-content class="h-[200px]">
+    <mat-card-title>{{ item.title }}</mat-card-title>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-button color="primary" effect="raised" (click)="(null)"
+      >more...</app-button
+    >
+  </mat-card-actions>
+  <mat-card-footer
+    appCardFooter
+    [published]="item.creationDate"
+    class="h-1"
+  ></mat-card-footer>
+</mat-card>

@@ -32,7 +32,8 @@ export interface SourceModel {
   };
 }
 
-export interface ItemModel extends SourceModel {
+export interface ItemModel extends Omit<SourceModel, 'id'> {
+  id: string;
   snippet: SourceModel['snippet'] & {
     tags: string[];
     categoryId: string;

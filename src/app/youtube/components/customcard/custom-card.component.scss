@@ -1,0 +1,11 @@
+@tailwind components;
+
+mat-card {
+  background-color: #e5e5e5;
+}
+mat-card-title {
+  @apply cursor-default text-center;
+}
+mat-card-actions {
+  @apply flex justify-center;
+}
