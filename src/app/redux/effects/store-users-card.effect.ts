@@ -4,18 +4,17 @@ import {
   addCustomCard,
   delCustomCard,
 } from 'redux/actions/custom-cards.actions';
-import { tap, first } from 'rxjs';
+import { tap } from 'rxjs';
 import { CardsStoreService } from 'redux/services/local-store.service';
 
 export const storeCards = createEffect(
   (actions$ = inject(Actions), storeService = inject(CardsStoreService)) => {
     return actions$.pipe(
       ofType(addCustomCard, delCustomCard),
-      first(),
       tap(() => {
         storeService.save();
       })
     );
   },
-  { functional: true, dispatch: true }
+  { functional: true, dispatch: false }
 );

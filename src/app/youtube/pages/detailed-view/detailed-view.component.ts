@@ -1,42 +1,23 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemModel } from 'youtube/models/search-item.model';
-import { Subject, map, takeUntil } from 'rxjs';
-import { HTTPRequestService } from 'youtube/services/http-request.service';
+import { Observable, mergeMap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectVideoById } from 'redux/selectors';
 
 @Component({
   selector: 'detailed-view',
   templateUrl: './detailed-view.component.html',
   styleUrls: ['./detailed-view.component.scss'],
 })
-export class DetailedViewComponent implements OnDestroy {
-  item?: ItemModel;
+export class DetailedViewComponent {
+  private readonly route = inject(ActivatedRoute);
 
-  error?: string;
-
-  constructor(
-    private route: ActivatedRoute,
-    private request: HTTPRequestService,
-  ) {
-    route.paramMap.subscribe((params) => {
-      const id = params.get('id') || '';
-
-      request
-        .getVideo(id)
-        .pipe(
-          map((resp) => resp.items[0]),
-          takeUntil(this.destroyer),
-        )
-        .subscribe((item) => {
-          this.item = item;
-        });
-    });
-  }
-
-  destroyer = new Subject<void>();
-
-  ngOnDestroy(): void {
-    this.destroyer.next();
-    this.destroyer.complete();
-  }
+  private readonly store = inject(Store);
+  item$: Observable<ItemModel | undefined> = this.route.paramMap.pipe(
+    mergeMap((params) => {
+      const id = params.get('id')!;
+      return this.store.select(selectVideoById(id));
+    })
+  );
 }

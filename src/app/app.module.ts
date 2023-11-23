@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReduxModule } from 'redux/redux.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { interceptorsProvider } from 'youtube/services/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     ReduxModule,
   ],
-  providers: [],
+  providers: [interceptorsProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

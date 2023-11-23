@@ -1,8 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import { setAllCardAction } from 'redux/actions/video-card.actions';
-import { ItemModel } from 'youtube/models/search-item.model';
+import {
+  addItemAction,
+  resetStateAction,
+} from 'redux/actions/video-card.actions';
+import { StoreModel } from 'redux/models/store.model';
 
-export const videoReducer = createReducer<ItemModel[]>(
-  [],
-  on(setAllCardAction, (state, { cards }) => cards),
+const initialState: StoreModel['videos'] = {};
+
+export const videoReducer = createReducer<StoreModel['videos']>(
+  {},
+  on(addItemAction, (state, { type, ...card }) => {
+    return { ...state, [card.id]: { ...card, favorite: false } };
+  }),
+  on(resetStateAction, () => initialState)
 );

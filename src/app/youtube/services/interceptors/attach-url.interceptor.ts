@@ -14,8 +14,11 @@ export class AttachUrlInterceptor implements HttpInterceptor {
   // eslint-disable-next-line class-methods-use-this
   intercept(
     req: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    if (!req.url.startsWith('search') && !req.url.startsWith('videos')) {
+      return next.handle(req);
+    }
     return next.handle(req.clone({ url: BASE_URL + req.url }));
   }
 }

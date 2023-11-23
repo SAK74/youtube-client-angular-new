@@ -36,6 +36,6 @@ import { CustomCardComponent } from './components/customcard/custom-card.compone
     YoutubeRoutingModule,
     HttpClientModule,
   ],
-  providers: [HTTPRequestService, interceptorsProvider],
+  providers: [HTTPRequestService],
 })
 export class YoutubeModule {}

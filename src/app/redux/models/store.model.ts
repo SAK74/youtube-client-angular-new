@@ -11,6 +11,6 @@ export interface CustomCard {
 }
 
 export interface StoreModel {
-  customCards: CustomCard[];
-  videos: ItemModel[];
+  customCards: { [id: string]: CustomCard };
+  videos: { [id: string]: ItemModel & { favorite: boolean } };
 }

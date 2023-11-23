@@ -7,12 +7,12 @@ import { ResponseModel } from 'youtube/models/search-response.model';
 export class HTTPRequestService {
   request = inject(HttpClient);
 
-  getSearch(search: string) {
+  getSearch(search: string, perPage?: number) {
     return this.request.get<ResponseModel>('search', {
       params: {
         type: 'video',
         part: 'snippet',
-        maxResults: 10,
+        maxResults: perPage || 10,
         q: search,
       },
     });
