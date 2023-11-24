@@ -1,16 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { StoreModel } from 'redux/models/store.model';
 import { selectCustomCards } from 'redux/selectors';
 
 const CARDS_KEY = 'stored-cards';
 
 @Injectable()
 export class CardsStoreService {
-  private store = inject<Store<StoreModel>>(Store<StoreModel>);
+  private store = inject(Store);
 
   save() {
-    console.log('stored in service!!!');
     this.store
       .select(selectCustomCards)
       .subscribe((cards) => {

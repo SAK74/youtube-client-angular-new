@@ -10,7 +10,11 @@ export interface CustomCard {
   id: string;
 }
 
+export interface ItemWithFavoriteModel extends ItemModel {
+  favorite: boolean;
+}
+
 export interface StoreModel {
   customCards: { [id: string]: CustomCard };
-  videos: { [id: string]: ItemModel & { favorite: boolean } };
+  videos: { [id: string]: ItemWithFavoriteModel };
 }

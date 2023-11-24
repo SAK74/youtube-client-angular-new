@@ -1,4 +1,4 @@
-<mat-card class="w-[260px]">
+<mat-card class="w-[260px]" *ngIf="item$ | async as item">
   <mat-card-header>
     <img
       class="w-full"
@@ -32,6 +32,11 @@
     <app-button color="primary" effect="raised" (click)="cardClick()"
       >more...</app-button
     >
+    <mat-icon
+      [fontIcon]="item.favorite ? 'favorite' : 'favorite_border'"
+      (click)="item.favorite ? removeFromFavs() : addToFavs()"
+      class="cursor-pointer"
+    />
   </mat-card-actions>
   <mat-card-footer
     appCardFooter

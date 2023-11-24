@@ -1,25 +1,40 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SortParamService } from 'youtube/services/sort-param.service';
 import { Store } from '@ngrx/store';
-import { StoreModel } from 'redux/models/store.model';
-import { selectCustomCards, selectVideos } from 'redux/selectors';
-import { map } from 'rxjs';
+import { CustomCard } from 'redux/models/store.model';
+import {
+  selectCustomCardsArray,
+  selectFavoritesIdArray,
+  selectVideoListIdArray,
+} from 'redux/selectors';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
 })
-export class SearchResultsComponent {
-  private readonly store = inject<Store<StoreModel>>(Store<StoreModel>);
+export class SearchResultsComponent implements OnInit {
+  private readonly store = inject(Store);
 
-  items$ = this.store
-    .select(selectVideos)
-    .pipe(map((videos) => Object.values(videos)));
+  private route = inject(ActivatedRoute);
 
-  cards$ = this.store
-    .select(selectCustomCards)
-    .pipe(map((cards) => Object.values(cards)));
+  private router = inject(Router);
+
+  videoIDs$: Observable<string[]> | null = null;
+
+  cards$: Observable<CustomCard[]> | null = null;
 
   sortParams = inject(SortParamService);
+
+  ngOnInit(): void {
+    if (this.router.url === '/fav') {
+      this.videoIDs$ = this.store.select(selectFavoritesIdArray);
+    } else {
+      this.videoIDs$ = this.store.select(selectVideoListIdArray);
+
+      this.cards$ = this.store.select(selectCustomCardsArray);
+    }
+  }
 }

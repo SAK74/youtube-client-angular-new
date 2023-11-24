@@ -14,10 +14,11 @@ export class DetailedViewComponent {
   private readonly route = inject(ActivatedRoute);
 
   private readonly store = inject(Store);
+
   item$: Observable<ItemModel | undefined> = this.route.paramMap.pipe(
     mergeMap((params) => {
-      const id = params.get('id')!;
-      return this.store.select(selectVideoById(id));
-    })
+      const id = params.get('id');
+      return this.store.select(selectVideoById(id || ''));
+    }),
   );
 }

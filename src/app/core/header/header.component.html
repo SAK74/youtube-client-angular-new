@@ -13,6 +13,12 @@
         <mat-icon svgIcon="settings-icon"></mat-icon>
       </button>
 
+      <a routerLink="/fav">
+        <mat-icon
+          [fontIcon]="router.url === '/fav' ? 'favorite' : 'favorite_border'"
+          color="primary"
+        ></mat-icon>
+      </a>
       <app-user class="absolute right-5"></app-user>
     </div>
     <app-settings *ngIf="showSettings.isShow"> </app-settings>

@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ItemModel } from 'youtube/models/search-item.model';
+import { ItemWithFavoriteModel } from 'redux/models/store.model';
 import { Sort } from 'youtube/models/sort.type';
 
 @Pipe({ name: 'byViews' })
 export class SortByViewsPipe implements PipeTransform {
   // eslint-disable-next-line class-methods-use-this
-  transform(value: ItemModel[] | null, dir: Sort) {
+  transform(value: ItemWithFavoriteModel[] | null, dir: Sort) {
     if (!value) {
       return null;
     }

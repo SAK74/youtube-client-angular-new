@@ -2,7 +2,7 @@ import { Component, inject, HostBinding } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { dateValidator } from 'admin/services/date-validator';
 import { Store } from '@ngrx/store';
-import { CustomCard, StoreModel } from 'redux/models/store.model';
+import { CustomCard } from 'redux/models/store.model';
 import { addCustomCard } from 'redux/actions/custom-cards.actions';
 
 @Component({
@@ -68,13 +68,12 @@ export class AdminPageComponent {
     );
   }
 
-  private store = inject<Store<StoreModel>>(Store<StoreModel>);
+  private store = inject(Store);
 
   submit() {
     if (this.adminForm.invalid) {
       return;
     }
-    console.log(this.adminForm.value);
     this.store.dispatch(addCustomCard(this.adminForm.value as CustomCard));
   }
 }

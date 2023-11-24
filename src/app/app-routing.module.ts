@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: async () => (await import('admin/admin.module')).AdminModule,
   },
   {
+    path: 'fav',
+    loadChildren: async () => (await import('favorite/favorite.module')).FavoriteModule,
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'youtube',

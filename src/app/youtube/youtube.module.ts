@@ -13,7 +13,6 @@ import { SortByViewsPipe } from './pipes/view-sort.pipe';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { DetailedViewComponent } from './pages/detailed-view/detailed-view.component';
 import { HTTPRequestService } from './services/http-request.service';
-import { interceptorsProvider } from './services/interceptors';
 import { CustomCardComponent } from './components/customcard/custom-card.component';
 
 @NgModule({
@@ -27,7 +26,7 @@ import { CustomCardComponent } from './components/customcard/custom-card.compone
     DetailedViewComponent,
     CustomCardComponent,
   ],
-  exports: [],
+  exports: [SearchResultsComponent],
   imports: [
     MatCardModule,
     MatIconModule,

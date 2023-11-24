@@ -5,9 +5,9 @@ import { CoreModule } from 'core/core.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReduxModule } from 'redux/redux.module';
+import { interceptorsProvider } from 'youtube/services/interceptors';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { interceptorsProvider } from 'youtube/services/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
