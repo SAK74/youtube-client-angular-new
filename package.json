@@ -10,7 +10,8 @@
     "start": "ng serve --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jest",
+    "test": "jest --watch --coverage=false",
+    "test:coverage": "jest",
     "lint": "ng lint",
     "deploy": "gh-pages -d dist"
   },

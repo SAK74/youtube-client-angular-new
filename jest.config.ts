@@ -65,7 +65,6 @@ const config: Config = {
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
-
   // A set of global variables that need to be available in all test environments
   // globals: {},
 
@@ -73,9 +72,7 @@ const config: Config = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: ['node_modules', 'src/app'],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
