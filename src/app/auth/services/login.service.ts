@@ -5,7 +5,7 @@ import { ProdLoggerService } from 'core/services/prod-logger.service';
 import { Subject } from 'rxjs';
 
 const TOKEN_KEY = 'token';
-const USER_KEY = 'user_name';
+export const USER_KEY = 'user_name';
 const fakeValue = 'qwertyuikl,mnbvcxzasdfgtyuiol.,mnb';
 
 @Injectable({ providedIn: 'root' })
@@ -21,7 +21,7 @@ export class LoginService {
   constructor(
     private router: Router,
     private devLogger: DevLoggerService,
-    private prodLogger: ProdLoggerService,
+    private prodLogger: ProdLoggerService
   ) {
     this.loginObserver.subscribe((isLogged) => {
       this.userIsLogged = isLogged;
