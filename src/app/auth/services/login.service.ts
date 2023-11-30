@@ -21,7 +21,7 @@ export class LoginService {
   constructor(
     private router: Router,
     private devLogger: DevLoggerService,
-    private prodLogger: ProdLoggerService
+    private prodLogger: ProdLoggerService,
   ) {
     this.loginObserver.subscribe((isLogged) => {
       this.userIsLogged = isLogged;

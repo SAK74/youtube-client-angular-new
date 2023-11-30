@@ -5,5 +5,5 @@
     "outDir": "./out-tsc/spec",
     "types": ["jest"]
   },
-  "include": ["src/**/*.(spec|test).ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.spec.ts", "src/**/*.test.ts", "src/**/*.d.ts"]
 }

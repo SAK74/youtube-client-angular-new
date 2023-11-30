@@ -1,13 +1,16 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { UserComponent } from './user.component';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { LoginService } from 'auth/services/login.service';
+import { UserComponent } from './user.component';
 
 class MockLoginService {
   userName = 'Fake name';
+
   userIsLogged = true;
+
   loginObserver = new Subject<boolean>();
+
   nameObserver = new Subject<string>();
 }
 
@@ -32,11 +35,11 @@ describe('User component testing', () => {
 
     it('Element should contain predicated childs', () => {
       const menuBtn = fixture.debugElement.query(
-        By.css('button[mat-icon-button]')
+        By.css('button[mat-icon-button]'),
       ).nativeElement;
       expect(menuBtn).not.toBeNull();
       const menuElem = fixture.debugElement.query(
-        By.css('mat-menu')
+        By.css('mat-menu'),
       ).nativeElement;
       expect(menuElem).not.toBeNull();
       const userNameElem = element.querySelector('.user-name');
@@ -70,8 +73,7 @@ describe('User component testing', () => {
 
     it('Should display new name value after triggered it in LoginService', () => {
       const newName = 'New emited name';
-      loginService.nameObserver.subscribe((next) => {
-        console.log('after emit: ', component.userName);
+      loginService.nameObserver.subscribe(() => {
         expect(component.userName).toBe(newName);
 
         fixture.detectChanges();
@@ -82,14 +84,14 @@ describe('User component testing', () => {
     });
 
     it('Should have appropriate prop after user logout', () => {
-      loginService.loginObserver.subscribe((next) => {
+      loginService.loginObserver.subscribe(() => {
         expect(component.userIsLogged).toBeFalsy();
       });
       loginService.loginObserver.next(false);
     });
 
     it("Shoould't display user name after user logout", () => {
-      loginService.loginObserver.subscribe((next) => {
+      loginService.loginObserver.subscribe(() => {
         fixture.detectChanges();
         const userNameElement = element.querySelector('.user-name');
         expect(userNameElement).toBeNull();

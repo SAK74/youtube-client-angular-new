@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { LoginService, USER_KEY } from './login.service';
 import { DevLoggerService } from 'core/services/dev-logger.service';
+import { LoginService, USER_KEY } from './login.service';
 
 const fakeName = 'some name';
 

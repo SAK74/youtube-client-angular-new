@@ -1,5 +1,5 @@
-import { ShowSettingsService } from './show-settings.service';
 import { TestBed } from '@angular/core/testing';
+import { ShowSettingsService } from './show-settings.service';
 
 describe('Without angular testing support', () => {
   let service: ShowSettingsService;

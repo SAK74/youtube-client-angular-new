@@ -3,12 +3,12 @@
   "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": ["*.spec.ts"],
-      "plugins": ["jasmine"],
+      "files": ["*.test.ts", "*.spec.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
       "env": {
-        "jasmine": true
-      },
-      "extends": ["plugin:jasmine/recommended"]
+        "jest": true
+      }
     },
     {
       "files": ["*.ts"],
