@@ -19,11 +19,11 @@ export class UserComponent implements OnDestroy {
     private iconReg: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private loginService: LoginService,
-    private router: Router,
+    private router: Router
   ) {
     iconReg.addSvgIcon(
       'user-icon',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/login.svg'),
+      sanitizer.bypassSecurityTrustResourceUrl('assets/login.svg')
     );
     loginService.loginObserver
       .pipe(takeUntil(this.destroyer))
