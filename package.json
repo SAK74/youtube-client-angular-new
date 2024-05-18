@@ -13,7 +13,8 @@
     "test": "jest --watch --coverage=false",
     "test:coverage": "jest",
     "lint": "ng lint",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "private": true,
   "dependencies": {

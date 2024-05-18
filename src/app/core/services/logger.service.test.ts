@@ -1,4 +1,5 @@
 import { DevLoggerService } from './dev-logger.service';
+import { ProdLoggerService } from './prod-logger.service';
 
 describe('Logger service testing', () => {
   beforeAll(() => {
@@ -9,12 +10,18 @@ describe('Logger service testing', () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
-  let service: DevLoggerService;
+  let devService: DevLoggerService;
+  let prodService: ProdLoggerService;
   beforeEach(() => {
-    service = new DevLoggerService();
+    devService = new DevLoggerService();
+    prodService = new ProdLoggerService();
   });
-  it('console.log should be called after call logMethod', () => {
-    service.logMessage();
+  it('DevService console.log should be called after call logMethod', () => {
+    devService.logMessage();
+    expect(console.log).toHaveBeenCalled();
+  });
+  it('ProdService console.log should be called after call logMethod', () => {
+    prodService.logMessage();
     expect(console.log).toHaveBeenCalled();
   });
 });

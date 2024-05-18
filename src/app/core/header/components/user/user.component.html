@@ -10,6 +10,8 @@
 
 <mat-menu #menu>
   <button mat-menu-item (click)="toYoutube()">Youtube view</button>
-  <button mat-menu-item (click)="goToAdmin()">Admin panel</button>
-  <button mat-menu-item (click)="logout()">Logout</button>
+  <button mat-menu-item (click)="goToAdmin()" class="toadmin">
+    Admin panel
+  </button>
+  <button mat-menu-item (click)="logout()" class="logout">Logout</button>
 </mat-menu>

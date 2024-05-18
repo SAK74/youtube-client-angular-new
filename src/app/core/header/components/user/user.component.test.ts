@@ -2,6 +2,8 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { LoginService } from 'auth/services/login.service';
+import { Router, provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { UserComponent } from './user.component';
 
 class MockLoginService {
@@ -12,6 +14,8 @@ class MockLoginService {
   loginObserver = new Subject<boolean>();
 
   nameObserver = new Subject<string>();
+
+  logout = jest.fn();
 }
 
 describe('User component testing', () => {
@@ -97,6 +101,38 @@ describe('User component testing', () => {
         expect(userNameElement).toBeNull();
       });
       loginService.loginObserver.next(false);
+    });
+
+    it('SHould call appropriate method after logout click', () => {
+      let logoutBtn: HTMLElement | null;
+      logoutBtn = element.querySelector('.logout');
+      expect(logoutBtn).not.toBeNull();
+      logoutBtn?.click();
+      expect(loginService.logout).toHaveBeenCalled();
+    });
+  });
+
+  describe('Navigation testing', () => {
+    let harnes: RouterTestingHarness;
+    let router: Router;
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [UserComponent],
+        providers: [provideRouter([{ path: '**', component: UserComponent }])],
+      }).compileComponents();
+      harnes = await RouterTestingHarness.create();
+      router = TestBed.inject(Router);
+      // fixture = TestBed.createComponent(UserComponent);
+      // element = fixture.debugElement.nativeElement;
+      component = await harnes.navigateByUrl('/', UserComponent);
+    });
+
+    it('Should navigate to admin page', () => {
+      console.log(harnes.routeNativeElement);
+      // const toAdminBtn = component.element.querySelector('.toadmin');
+      // expect(toAdminBtn).not.toBeNull();
+      component.goToAdmin();
+      expect(router.url).toBe('/admin');
     });
   });
 });
