@@ -1,7 +1,7 @@
 {
   "name": "youtube-client-app",
   "version": "0.0.0",
-  "homepage": "https://rolling-scopes-school.github.io/sak74-ANGULAR2023Q4/",
+  "homepage": "https://sak74.github.io/youtube-client-angular-new/",
   "author": {
     "name": "SAK74"
   },
@@ -13,7 +13,7 @@
     "test": "jest --watch --coverage=false",
     "test:coverage": "jest",
     "lint": "ng lint",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -o private",
     "predeploy": "npm run build"
   },
   "private": true,

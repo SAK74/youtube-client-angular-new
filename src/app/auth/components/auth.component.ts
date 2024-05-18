@@ -24,7 +24,7 @@ export class AuthComponent {
       case field.hasError('required'):
         return `${name.replace(/\b\w/, (l) => l.toUpperCase())} is required!`;
       case field.hasError('email'):
-        return `The ${name} format is invalid`;
+        return `The ${name} must be e-mail format`;
       case field.hasError('wrongFormat'):
         return field.getError('wrongFormat');
       default:
