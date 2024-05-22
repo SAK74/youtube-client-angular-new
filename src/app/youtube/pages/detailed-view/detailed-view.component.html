@@ -22,12 +22,12 @@
           {{ (item$ | async)?.statistics?.viewCount }}
         </span>
         <span>
-          <mat-icon fontIcon="favorite"></mat-icon>
+          <mat-icon fontIcon="thumb_up"></mat-icon>
           {{ (item$ | async)?.statistics?.likeCount }}
         </span>
         <span>
-          <mat-icon fontIcon="heart_broken"></mat-icon>
-          {{ (item$ | async)?.statistics?.dislikeCount }}
+          <mat-icon fontIcon="favorite"></mat-icon>
+          {{ (item$ | async)?.statistics?.favoriteCount }}
         </span>
         <span>
           <mat-icon fontIcon="comment_multiple"></mat-icon>

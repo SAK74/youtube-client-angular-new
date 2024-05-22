@@ -7,7 +7,7 @@ interface ThumbType {
 type Statistic =
   | 'viewCount'
   | 'likeCount'
-  | 'dislikeCount'
+  // | 'dislikeCount'
   | 'favoriteCount'
   | 'commentCount';
 
