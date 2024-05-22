@@ -23,21 +23,21 @@ export class HeaderComponent implements OnDestroy {
     private sanitizer: DomSanitizer,
     public showSettings: ShowSettingsService,
     private store: Store,
-    public router: Router
+    public router: Router,
   ) {
     iconReg.addSvgIcon(
       'settings-icon',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/search_settings.svg')
+      sanitizer.bypassSecurityTrustResourceUrl('assets/search_settings.svg'),
     );
 
     this.inputSubscription = this.searchCtrl.valueChanges
       .pipe(
         filter((word) => word.length >= 3),
-        debounceTime(2000)
+        debounceTime(2000),
       )
       .subscribe((word) => {
         store.dispatch(
-          resetAndFetchAction({ search: word, perPage: VIDEOS_PER_PAGE })
+          resetAndFetchAction({ search: word, perPage: VIDEOS_PER_PAGE }),
         );
         router.navigateByUrl('youtube');
       });

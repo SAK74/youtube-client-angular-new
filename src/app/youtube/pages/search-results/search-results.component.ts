@@ -1,7 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SortParamService } from 'youtube/services/sort-param.service';
 import { Store } from '@ngrx/store';
-import { CustomCard } from 'redux/models/store.model';
+import type {
+  CustomCard,
+  ItemWithFavoriteModel,
+} from 'redux/models/store.model';
 import {
   selectCustomCardsArray,
   selectFavoritesIdArray,
@@ -22,7 +25,7 @@ export class SearchResultsComponent implements OnInit {
 
   private router = inject(Router);
 
-  videoIDs$: Observable<string[]> | null = null;
+  videos$: Observable<ItemWithFavoriteModel[]> | null = null;
 
   cards$: Observable<CustomCard[]> | null = null;
 
@@ -30,9 +33,9 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url === '/fav') {
-      this.videoIDs$ = this.store.select(selectFavoritesIdArray);
+      this.videos$ = this.store.select(selectFavoritesIdArray);
     } else {
-      this.videoIDs$ = this.store.select(selectVideoListIdArray);
+      this.videos$ = this.store.select(selectVideoListIdArray);
 
       this.cards$ = this.store.select(selectCustomCardsArray);
     }

@@ -1,7 +1,13 @@
 <div class="flex flex-wrap justify-around gap-4 w-11/12">
   <custom-card *ngFor="let card of cards$ | async" [item]="card"></custom-card>
   <app-search-item
-    *ngFor="let id of videoIDs$ | async"
-    [videoID]="id"
+    *ngFor="
+      let video of videos$
+        | async
+        | byWord : sortParams.filterByWord
+        | byDate : sortParams.sortByDate
+        | byViews : sortParams.sortByView
+    "
+    [item]="video"
   ></app-search-item>
 </div>

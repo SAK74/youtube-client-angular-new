@@ -12,12 +12,11 @@ export const selectVideoById = (id: string) => createSelector(selectVideosState,
 
 export const selectVideoListIdArray = createSelector(
   selectVideosState,
-  (videos) => Object.keys(videos),
+  (videos) => Object.values(videos),
 );
 
 export const selectFavoritesIdArray = createSelector(
   selectVideosState,
-  (videos) => Object.values(videos)
-    .filter((video) => video.favorite)
-    .map((video) => video.id),
+  (videos) => Object.values(videos).filter((video) => video.favorite),
+  // .map((video) => video.id),
 );
