@@ -13,10 +13,10 @@ export class AuthInterceptor implements HttpInterceptor {
   // eslint-disable-next-line class-methods-use-this
   intercept(
     req: HttpRequest<unknown>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     return next.handle(
-      req.clone({ params: req.params.append('key', environment.apiKey) })
+      req.clone({ params: req.params.append('key', environment.apiKey) }),
     );
   }
 }

@@ -104,8 +104,8 @@ describe('User component testing', () => {
     });
 
     it('SHould call appropriate method after logout click', () => {
-      let logoutBtn: HTMLElement | null;
-      logoutBtn = element.querySelector('.logout');
+      // let logoutBtn: HTMLElement | null;
+      const logoutBtn: HTMLElement | null = element.querySelector('.logout');
       expect(logoutBtn).not.toBeNull();
       logoutBtn?.click();
       expect(loginService.logout).toHaveBeenCalled();
